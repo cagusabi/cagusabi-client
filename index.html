@@ -6,12 +6,23 @@
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900|Cabin+Sketch:400,700" rel="stylesheet">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <div class="wrapper">
+      <h1>Image Upload</h1>
+      <!-- crucial: multipart/form-data and type=file -->
+      <form id="image-uploader" enctype="multipart/form-data" class="form-group">
+        <input />
+        <input name="file" type="file" />
+        <input class="btn btn-danger" type="submit" />
+      </form>
+      <div id="image-display">
+      </div>
+    </div>
     </body>
 </html>
