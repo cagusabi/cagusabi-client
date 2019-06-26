@@ -1,31 +1,40 @@
 'use strict'
+const pkg = 'auth.ui'
 
 const store = require('../store')
 const util = require('../util')
 
 const onSignUpSuccess = () => {
-  util.logMessage('', 'Signed up successfully!')
+  util.logMessage(`${pkg}.onSignUpSuccess()`, 'Signed up successfully!')
 }
 
 const onSignUpFailure = () => {
-  util.logMessage('', 'Sign up failed!')
+  util.logMessage(`${pkg}.onSignUpFailure()`, 'Sign up failed!')
 }
 
 const onSignInSuccess = (responseData) => {
   store.user = responseData.user
-  util.logMessage('', 'Signed in successfully!')
+  util.logMessage(`${pkg}.onSignInSuccess()`, 'Signed in successfully!')
 }
 
 const onSignInFailure = () => {
-  util.logMessage('', 'Sign up failed!')
+  util.logMessage(`${pkg}.onSignInFailure()`, 'Sign in failed!')
 }
 
 const onSignOutSuccess = () => {
-  util.logMessage('', 'Signed out successfully!')
+  util.logMessage(`${pkg}.onSignOutSuccess()`, 'Signed out successfully!')
 }
 
 const onSignOutFailure = () => {
-  util.logMessage('', 'Sign out failed!')
+  util.logMessage(`${pkg}.onSignOutFailure()`, 'Sign out failed!')
+}
+
+const onChangePasswordSuccess = () => {
+  util.logMessage(`${pkg}.onChangePasswordSuccess()`, 'Changed password successfully!')
+}
+
+const onChangePasswordFailure = () => {
+  util.logMessage(`${pkg}.onChangePasswordFailure()`, 'Change password failed!')
 }
 
 module.exports = {
@@ -34,5 +43,7 @@ module.exports = {
   onSignInSuccess,
   onSignInFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onChangePasswordSuccess,
+  onChangePasswordFailure
 }
