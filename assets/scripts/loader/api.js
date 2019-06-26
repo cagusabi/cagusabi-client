@@ -1,7 +1,7 @@
 'use strict'
 const config = require('../config')
 
-const imageLoad = function (formData) {
+const imageUpload = formData => {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/uploads',
@@ -12,5 +12,5 @@ const imageLoad = function (formData) {
 }
 
 module.exports = {
-  imageLoad
+  imageUpload
 }
