@@ -4,8 +4,8 @@ const api = require('./api')
 const onImageLoad = (event) => {
   event.preventDefault()
   api.imageLoad()
-  .then
-  })
+  // .then
+  // })
 }
 
 
