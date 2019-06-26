@@ -14,15 +14,96 @@
     </head>
     <body>
       <div class="wrapper">
-      <h1>Image Upload</h1>
-      <!-- crucial: multipart/form-data and type=file -->
-      <form id="image-uploader" enctype="multipart/form-data" class="form-group">
-        <input />
-        <input name="file" type="file" />
-        <input class="btn btn-danger" type="submit" />
-      </form>
-      <div id="image-display">
+        <!-- header start -->
+        <header>
+          <h1>CAGUSABI Image Uploader</h1>
+          <!-- navbar -->
+          <nav class="navbar-nav bg-dark" id="navbar">
+            <div class="container">
+              <button id="sign-up-btn" class="btn btn-secondary">Sign Up</button>
+              <button id="sign-in-btn" class="btn btn-secondary">Sign In</button>
+              <button id="change-password-btn" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#change-pw">Change Password</button>
+              <form id="sign-out">
+                <button id="sign-out-btn" type="submit" class="btn btn-secondary">Sign Out</button>
+              </form>
+            </div>
+          </nav>
+          <!-- navbar end -->
+
+          <!-- title & welcome message -->
+          <hr>
+          <section class="auth-forms">
+            <div class="auth-forms" id="auth-forms">
+                <form id="sign-up">
+                  <div class="container form-group">
+                    <label for="formGroupSignIn">Sign Up</label>
+                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email">
+                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password">
+                    <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Password Confirmation">
+                    <br />
+                    <small>
+                      <p>You can sign in using these sample credentials:<br />
+                        <b>Email:</b> sample@sample<br />
+                        <b>Password:</b> sample
+                      </p>
+                    </small>
+                    <input type="submit" class="btn btn-secondary" value="Sign Up">
+                  </div>
+                </form>
+
+                <form id="sign-in">
+                  <div class="container form-group">
+                    <label for="formGroupSignIn">Sign In</label>
+                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email">
+                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password">
+                    <br />
+                    <small>
+                      <p>You can sign in using these sample credentials:<br />
+                        <b>Email:</b> sample@sample<br />
+                        <b>Password:</b> sample
+                      </p>
+                    </small>
+                    <input type="submit" class="btn btn-secondary" value="Sign In">
+                  </div>
+                </form>
+              </div>
+
+              <!-- change password modal -->
+              <div class="modal fade" id="change-pw" tabindex="-1" role="dialog" aria-labelledby="changePasswordModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="changePasswordModalTitle">Change Password</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="change-password" class="container auth-forms">
+                        <div class="form-group">
+                          <input class="form-control" name="passwords[old]" type="password" placeholder="Old Password">
+                          <input class="form-control" name="passwords[new]" type="password" placeholder="New Password">
+                          <br />
+                          <input type="submit" class="btn btn-secondary" value="Change It!">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- change password modal end -->
+            </section>
+          </header>
+          <!-- header end -->
+
+        <!-- crucial: multipart/form-data and type=file -->
+        <form id="image-uploader" enctype="multipart/form-data" class="form-group">
+          <input />
+          <input name="file" type="file" />
+          <input class="btn btn-danger" type="submit" />
+        </form>
+        <div id="list-items"></div>
+        <div id="image-display"></div>
       </div>
-    </div>
     </body>
 </html>
