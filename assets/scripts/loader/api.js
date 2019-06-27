@@ -17,16 +17,17 @@ const imageUpload = formData => {
 }
 
 const imageUpdate = function (formData) {
-  console.log(formData)
+  console.log(formData.id)
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     method: 'PATCH',
-    url: config.apiUrl + '/uploads/' + formData.id,
-    contentType: false, // you use this because StackOverFlow. but basically you just don't want jQuery to interfere, because we've already set the content type
-    processData: false, // same here
+    url: config.apiUrl + '/uploads/' + formData.upload.id,
     data: formData // then we can just send it as is because it's already formatted
+
+     // you use this because StackOverFlow. but basically you just don't want jQuery to interfere, because we've already set the content type
+    // processData: false, // same here
   })
 }
 

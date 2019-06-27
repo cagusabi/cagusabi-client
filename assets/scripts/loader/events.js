@@ -17,7 +17,7 @@ const onImageUpdate = event => {
   const formData = getFormFields(event.target)
 
   api.imageUpdate(formData)
-    .then(ui.onImageUploadSuccess)
+    .then(console.log)
     .catch(ui.onImageUploadFailure)
 }
 
