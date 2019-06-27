@@ -96,8 +96,17 @@
 
         <!-- crucial: multipart/form-data and type=file -->
         <form id="image-uploader" enctype="multipart/form-data" class="form-group">
-          <input />
           <input name="file" type="file" />
+          <input name="name" type="text" placeholder="name" />
+          <input name="description" type="text" placeholder="desc"/>
+          <input name="tags" type="text" placeholder="tags"/>
+          <input class="btn btn-danger" type="submit" />
+        </form>
+        <form id="image-update" class="form-group">
+          <input name="upload[id]" type="text" placeholder="id"/>
+          <input name="upload[name]" type="text" placeholder="name" />
+          <input name="upload[description]" type="text" placeholder="description"/>
+          <input name="upload[tags]" type="text" placeholder="tags"/>
           <input class="btn btn-danger" type="submit" />
         </form>
         <div id="list-items"></div>
