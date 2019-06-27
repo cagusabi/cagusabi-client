@@ -1,6 +1,7 @@
 'use strict'
 const api = require('./api')
 const ui = require('./ui')
+const getFormFields = require('../../../lib/get-form-fields')
 
 const onImageUpload = event => {
   event.preventDefault()
@@ -11,7 +12,17 @@ const onImageUpload = event => {
     .catch(ui.onImageUploadFailure)
 }
 
+const onImageUpdate = event => {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+
+  api.imageUpdate(formData)
+    .then(ui.onImageUploadSuccess)
+    .catch(ui.onImageUploadFailure)
+}
+
 const addHandlers = () => {
+  $('#image-update').on('submit', onImageUpdate)
   $('#image-uploader').on('submit', onImageUpload)
 }
 
