@@ -32,9 +32,7 @@
     <p>
       <!-- same here -->
       <!-- I'm not sure about the "not-equals" syntax here, need to check -->
-      {{#if upload.createdAt !== upload.updatedAt}}
-        {{upload.updatedAt}}
-      {{/if}}
+
     </p>
     <p>
       {{upload.tags}}
@@ -62,7 +60,6 @@
       {{/if}}
     </p>
     <!-- we don't have partials right now, but this is how we would insert one -->
-    <!-- {{> partial}} -->
   </section>
 
 {{/each}}

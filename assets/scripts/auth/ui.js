@@ -3,6 +3,8 @@ const pkg = 'auth.ui'
 
 const store = require('../store')
 const util = require('../util')
+const loaderApi = require('../loader/api.js')
+const loaderUi = require('../loader/ui.js')
 
 const onSignUpSuccess = () => {
   util.logMessage(`${pkg}.onSignUpSuccess()`, 'Signed up successfully!')
@@ -15,6 +17,11 @@ const onSignUpFailure = () => {
 const onSignInSuccess = (responseData) => {
   store.user = responseData.user
   util.logMessage(`${pkg}.onSignInSuccess()`, 'Signed in successfully!')
+  loaderApi.imageIndex()
+    .then(loaderUi.onIndexSuccess)
+    .catch(loaderUi.failure)
+  // const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: store.uploads })
+  // $('.content').html(indexUploadsHandlebars)
 }
 
 const onSignInFailure = () => {

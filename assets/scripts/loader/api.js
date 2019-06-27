@@ -26,12 +26,24 @@ const imageUpdate = function (formData) {
     url: config.apiUrl + '/uploads/' + formData.upload.id,
     data: formData // then we can just send it as is because it's already formatted
 
-     // you use this because StackOverFlow. but basically you just don't want jQuery to interfere, because we've already set the content type
+    // you use this because StackOverFlow. but basically you just don't want jQuery to interfere, because we've already set the content type
     // processData: false, // same here
+  })
+}
+
+const imageIndex = function () {
+  console.log('ui imageIndex ran')
+  return $.ajax({
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    method: 'GET',
+    url: config.apiUrl + '/uploads'
   })
 }
 
 module.exports = {
   imageUpload,
-  imageUpdate
+  imageUpdate,
+  imageIndex
 }
