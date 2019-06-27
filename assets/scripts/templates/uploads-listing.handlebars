@@ -18,21 +18,22 @@
         No description provided.
       {{/if}}
     </p>
+    <p>
+      <img src={{upload.url}} />
+    </p>
     <h6>Submitted by:</h6>
     <p>
-      {{upload.owner}}
+      {{upload._id}}
     </p>
     <h6>Submit Date:</h6>
     <p>
       <!-- createdAt gives you this ugly format: "2019-06-26T14:27:27.538Z" -->
       <!-- so this will need to be changed -->
-      {{event.createdAt}}
+      {{limit upload.createdAt}}
     </p>
     <h6>Last Updated:</h6>
     <p>
-      <!-- same here -->
-      <!-- I'm not sure about the "not-equals" syntax here, need to check -->
-
+      {{limit upload.updatedAt}}
     </p>
     <p>
       {{upload.tags}}
