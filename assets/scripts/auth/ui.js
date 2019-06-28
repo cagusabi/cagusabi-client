@@ -78,7 +78,10 @@ const onChangePasswordSuccess = () => {
 
 const onChangePasswordFailure = () => {
   util.logMessage(`${pkg}.onChangePasswordFailure()`, 'Change password failed!')
-  $('#changePasswordModalTitle').text('Password has NOT been changed!')
+  document.getElementById('changePasswordModalTitle').style.display = 'none'
+  $('#changePasswordModalTitle').fadeIn('fast')
+  $('#changePasswordModalTitle').html('Change password failed!')
+  setTimeout(() => $('#changePasswordModalTitle').text('Try Again?'), 3000)
   $('form').trigger('reset')
 }
 
