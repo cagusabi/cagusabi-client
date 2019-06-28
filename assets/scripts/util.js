@@ -16,6 +16,19 @@ const logMessage = function () {
   }
 }
 
+/*
+** logObject() - dumps an object to the console ONLY in development.
+**    params: method name
+**            message to be logged
+**    returns: nothing
+*/
+const logObject = function (obj) {
+  if (config.isNotProd) {
+    console.log(obj)
+  }
+}
+
 module.exports = {
-  logMessage
+  logMessage,
+  logObject
 }
