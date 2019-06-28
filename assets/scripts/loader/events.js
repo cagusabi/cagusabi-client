@@ -16,7 +16,6 @@ const onImageUpdate = event => {
   event.preventDefault()
   const id = $(event.target).data('id')
 
-  console.log('event' + event.target)
   const formData = getFormFields(event.target)
 
   api.imageUpdate(id, formData)
@@ -26,7 +25,6 @@ const onImageUpdate = event => {
 
 const onImageRemove = event => {
   const id = $(event.target).data('id')
-  console.log(id)
   event.preventDefault()
 
   api.imageRemove(id)

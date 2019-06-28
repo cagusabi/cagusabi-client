@@ -25,7 +25,7 @@
       <div class="col-lg-6">
               <div class="feature-item">
                 <!-- Button trigger modal -->
-                <img src={{upload.url}} class="w-50" alt="" type="button" class="img-fluid" data-toggle="modal" data-target="#exampleModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">
+                <img src={{upload.url}} class="img-responsive" style="max-width: 50%" alt="" type="button" class="img-fluid" data-toggle="modal" data-target="#exampleModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">
 
                 <!-- Modal -->
                 <div class="modal fade bd-example-modal-lg" id="exampleModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="{{upload._id}}">
@@ -69,6 +69,7 @@
       {{limit upload.updatedAt}}
     </p>
     <p>
+      <h6>Tags:</h6>
       {{upload.tags}}
     </p>
     <p>
