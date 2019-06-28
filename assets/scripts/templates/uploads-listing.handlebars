@@ -21,7 +21,38 @@
       {{/if}}
     </p>
     <p>
-      <img src={{upload.url}} />
+
+      <div class="col-lg-6">
+              <div class="feature-item">
+                <!-- Button trigger modal -->
+                <img src={{upload.url}} class="w-50" alt="" type="button" class="img-fluid" data-toggle="modal" data-target="#exampleModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">
+
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg" id="exampleModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="{{upload._id}}">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body text-center d-block" data-id="{{upload._id}}">
+                        <img src={{upload.url}} class="img-responsive" style="max-width: 100%" />
+                      </div>
+                      <div class="modal-footer">
+                        <a href="{{upload.url}}" target=“_blank”>
+                          <button type=“button” class=“btn btn-secondary”>
+                            Open
+                          </button>
+                        </a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
     </p>
     <h6>Submitted by:</h6>
     <p>
