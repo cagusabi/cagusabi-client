@@ -11,6 +11,7 @@ const onSignUpSuccess = () => {
   $('#user-message-modal-title').text('Sign Up')
   $('#user-message-modal-body').text('Signed up successfully!')
   $('#user-message-modal').modal('show')
+  $('form').trigger('reset')
 }
 
 const onSignUpFailure = () => {
@@ -24,7 +25,6 @@ const onSignUpFailure = () => {
 const onSignInSuccess = (responseData) => {
   store.user = responseData.user
   util.logMessage(`${pkg}.onSignInSuccess()`, 'Signed in successfully!')
-
   $('#user-message-modal-title').text('Sign In')
   $('#user-message-modal-body').text('Signed in successfully!')
   $('#user-message-modal').modal('show')
@@ -34,6 +34,7 @@ const onSignInSuccess = (responseData) => {
   $('#change-password-btn').show()
   $('#sign-out-btn').show()
   $('#image-uploader').show()
+  $('form').trigger('reset')
   loaderApi.imageIndex()
     .then(loaderUi.onIndexSuccess)
     .catch(loaderUi.failure)
