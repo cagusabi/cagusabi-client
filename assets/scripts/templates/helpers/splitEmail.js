@@ -4,10 +4,9 @@
 
 'use strict'
 
-const limit = (date) => {
-  console.log(date)
-  const newDate = date.split('T')[0]
-  return newDate
+const splitEmail = (email) => {
+  const newEmail = email.split('@')[0]
+  return newEmail
 }
 
-module.exports = limit
+module.exports = splitEmail
