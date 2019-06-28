@@ -1,8 +1,10 @@
 'use strict'
+const pkg = 'auth.events'
 
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+const util = require('../util')
 
 /*
 ** onSignUp()
@@ -11,6 +13,7 @@ const ui = require('./ui')
 */
 const onSignUp = (event) => {
   event.preventDefault()
+  util.logMessage(`${pkg}.onSignUp()`)
   const formData = getFormFields(event.target)
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
@@ -24,6 +27,7 @@ const onSignUp = (event) => {
 */
 const onSignIn = (event) => {
   event.preventDefault()
+  util.logMessage(`${pkg}.onSignIn()`)
   const formData = getFormFields(event.target)
   api.signIn(formData)
     .then(ui.onSignInSuccess)
@@ -37,6 +41,7 @@ const onSignIn = (event) => {
 */
 const onSignOut = (event) => {
   event.preventDefault()
+  util.logMessage(`${pkg}.onSignOut()`)
   api.signOut()
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
@@ -49,7 +54,9 @@ const onSignOut = (event) => {
 */
 const onChangePassword = (event) => {
   event.preventDefault()
+  util.logMessage(`${pkg}.onChangePassword()`)
   const formData = getFormFields(event.target)
+  util.logObject(formData)
   api.changePassword(formData)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)

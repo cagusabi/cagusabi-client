@@ -8,6 +8,9 @@ const loaderUi = require('../loader/ui.js')
 
 const onSignUpSuccess = () => {
   util.logMessage(`${pkg}.onSignUpSuccess()`, 'Signed up successfully!')
+  $('#user-message-modal-title').text('Sign Up')
+  $('#user-message-modal-body').text('Signed up successfully!')
+  $('#user-message-modal').modal('show')
 }
 
 const onSignUpFailure = () => {
@@ -17,6 +20,9 @@ const onSignUpFailure = () => {
 const onSignInSuccess = (responseData) => {
   store.user = responseData.user
   util.logMessage(`${pkg}.onSignInSuccess()`, 'Signed in successfully!')
+  $('#user-message-modal-title').text('Sign In')
+  $('#user-message-modal-body').text('Signed in successfully!')
+  $('#user-message-modal').modal('show')
   loaderApi.imageIndex()
     .then(loaderUi.onIndexSuccess)
     .catch(loaderUi.failure)

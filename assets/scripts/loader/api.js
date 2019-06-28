@@ -1,10 +1,14 @@
 'use strict'
+const pkg = 'loader.api'
+
 const config = require('../config')
 const store = require('../store')
+const util = require('../util')
 // const getFormFields = require('../../../lib/get-form-fields')
-const imageUpload = formData => {
-  return $.ajax({
 
+const imageUpload = formData => {
+  util.logMessage(`${pkg}.imageUpload()`)
+  return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/uploads',
     contentType: false, // you use this because StackOverFlow. but basically you just don't want jQuery to interfere, because we've already set the content type
@@ -17,12 +21,13 @@ const imageUpload = formData => {
 }
 
 const imageUpdate = function (id, formData) {
+  util.logMessage(`${pkg}.imageUpload()`, formData.id)
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     method: 'PATCH',
-    url: config.apiUrl + '/uploads/' + id,
+    url: config.apiUrl + '/uploads/' + formData.upload.id,
     data: formData // then we can just send it as is because it's already formatted
 
     // you use this because StackOverFlow. but basically you just don't want jQuery to interfere, because we've already set the content type
@@ -31,6 +36,7 @@ const imageUpdate = function (id, formData) {
 }
 
 const imageIndex = function () {
+  util.logMessage(`${pkg}.imageUpload()`, 'ui imageIndex ran')
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -41,6 +47,7 @@ const imageIndex = function () {
 }
 
 const imageRemove = function (id) {
+  util.logMessage(`${pkg}.imageRemove()`)
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
