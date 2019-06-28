@@ -29,7 +29,9 @@ const onImageUpdate = event => {
   const formData = getFormFields(event.target)
 
   api.imageUpdate(id, formData)
-    .then(console.log)
+    .then(res => {
+      onImagesLoad(event)
+    })
     .catch(ui.onImageUploadFailure)
 }
 
@@ -38,9 +40,9 @@ const onImageRemove = event => {
   event.preventDefault()
 
   api.imageRemove(id)
-  .then(res => {
-    onImagesLoad(event)
-  })
+    .then(res => {
+      onImagesLoad(event)
+    })
     .catch(ui.onRemoveFailure)
 }
 
@@ -49,7 +51,8 @@ const addHandlers = () => {
   $('#image-uploader').on('submit', onImageUpload)
   $('.content').on('click', '.remove-upload', onImageRemove)
   $('.content').submit('#image-update' + $(this).data('id'), onImageUpdate)
-  $('.content').on('show.bs.modal', '#exampleModal-' + $(this).data('id'), function (event) {
+
+  $('.content').on('show.bs.modal', '#exampleModal-' + $(this).data('id'), function(event) {
     const button = $(event.relatedTarget) // Button that triggered the modal
     const recipient = button.data('whatever') // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
