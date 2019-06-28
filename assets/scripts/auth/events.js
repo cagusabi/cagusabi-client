@@ -6,6 +6,12 @@ const api = require('./api')
 const ui = require('./ui')
 const util = require('../util')
 
+document.getElementById('sign-up').style.display = 'none'
+document.getElementById('sign-in').style.display = 'none'
+document.getElementById('change-password-btn').style.display = 'none'
+document.getElementById('sign-out-btn').style.display = 'none'
+document.getElementById('image-uploader').style.display = 'none'
+
 /*
 ** onSignUp()
 **    parameter: event
@@ -63,6 +69,16 @@ const onChangePassword = (event) => {
 }
 
 const addHandlers = () => {
+  $('#sign-up-btn').on('click', function () {
+    $('#sign-in').fadeOut('fast')
+    $('.welcome-message').fadeOut('fast')
+    $('#sign-up').delay(200).fadeIn('fast')
+  })
+  $('#sign-in-btn').on('click', function () {
+    $('#sign-up').fadeOut('fast')
+    $('.welcome-message').fadeOut('fast')
+    $('#sign-in').delay(200).fadeIn('fast')
+  })
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out-btn').on('click', onSignOut)
