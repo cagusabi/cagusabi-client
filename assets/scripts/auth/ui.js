@@ -69,10 +69,17 @@ const onSignOutFailure = () => {
 
 const onChangePasswordSuccess = () => {
   util.logMessage(`${pkg}.onChangePasswordSuccess()`, 'Changed password successfully!')
+  document.getElementById('changePasswordModalTitle').style.display = 'none'
+  $('#changePasswordModalTitle').fadeIn('fast')
+  $('#changePasswordModalTitle').html('Password changed successfully!')
+  setTimeout(() => $('#changePasswordModalTitle').text('Change Again?'), 3000)
+  $('form').trigger('reset')
 }
 
 const onChangePasswordFailure = () => {
   util.logMessage(`${pkg}.onChangePasswordFailure()`, 'Change password failed!')
+  $('#changePasswordModalTitle').text('Password has NOT been changed!')
+  $('form').trigger('reset')
 }
 
 module.exports = {
