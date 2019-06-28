@@ -1,33 +1,36 @@
 'use strict'
-const pkg = 'loader.events'
-
 const api = require('./api')
 const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
-const util = require('../util')
+
+const onImagesLoad = event => {
+  event.preventDefault()
+
+  api.imageIndex()
+    .then(ui.onIndexSuccess)
+    .catch(ui.onImageUploadFailure)
+}
 
 const onImageUpload = event => {
   event.preventDefault()
-  util.logMessage(`${pkg}.onImageUpload()`)
   const formData = new FormData(event.target)
-  util.logObject(formData)
 
   api.imageUpload(formData)
-    .then(ui.onImageUploadSuccess)
+    .then(res => {
+      onImagesLoad(event)
+    })
     .catch(ui.onImageUploadFailure)
 }
 
 const onImageUpdate = event => {
   event.preventDefault()
   const id = $(event.target).data('id')
-  util.logMessage(`${pkg}.onImageUpdate()`, 'Data ID: ' + id)
 
   const formData = getFormFields(event.target)
-  util.logObject(formData)
 
   api.imageUpdate(id, formData)
-    .then(ui.onImageUpdateSuccess)
-    .catch(ui.onImageUpdateFailure)
+    .then(console.log)
+    .catch(ui.onImageUploadFailure)
 }
 
 const onImageRemove = event => {
