@@ -5,7 +5,6 @@
 'use strict'
 
 const limit = (date) => {
-  console.log(date)
   const newDate = date.split('T')[0]
   return newDate
 }

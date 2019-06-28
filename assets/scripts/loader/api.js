@@ -17,8 +17,6 @@ const imageUpload = formData => {
 }
 
 const imageUpdate = function (id, formData) {
-  console.log("id!" + id)
-  console.log("form" + formData)
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -33,7 +31,6 @@ const imageUpdate = function (id, formData) {
 }
 
 const imageIndex = function () {
-  console.log('ui imageIndex ran')
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -44,7 +41,6 @@ const imageIndex = function () {
 }
 
 const imageRemove = function (id) {
-  console.log('ui imageRemove ran')
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
