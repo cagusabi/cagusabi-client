@@ -11,7 +11,7 @@ document.getElementById('sign-in').style.display = 'none'
 document.getElementById('change-password-btn').style.display = 'none'
 document.getElementById('sign-out-btn').style.display = 'none'
 document.getElementById('image-uploader').style.display = 'none'
-
+document.getElementById('uploadButton').style.display = 'none'
 /*
 ** onSignUp()
 **    parameter: event

@@ -46,7 +46,41 @@
           </div>
           <!-- title & welcome message -->
           <h1>CAGUSABI Image Uploader</h1>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadImageModal" id='uploadButton'>
+            Upload a Photo!
+          </button>
+          <!-- MODAL START -->
+          <div class="modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="uploadImageModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- FORM START -->
+                  <form id="image-uploader" enctype="multipart/form-data" class="form-group">
+                    <input name="file" type="file" />
+                    <input name="name" type="text" placeholder="name" />
+                    <input name="description" type="text" placeholder="desc"/>
+                    <input name="tags" type="text" placeholder="tags"/>
+                    <input class="btn btn-danger" type="submit" />
+                  </form>
+                  <!-- FORM END -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- MODAL END -->
           <hr>
+
+
           <section class="welcome-message">
             <p>Welcome to Cagusabi, the bespoke image loader</p>
 
@@ -129,18 +163,6 @@
           <div class="content">
 
           </div>
-
-        <!-- crucial: multipart/form-data and type=file -->
-        <form id="image-uploader" enctype="multipart/form-data" class="form-group">
-          <input name="file" type="file" />
-          <input name="name" type="text" placeholder="name" />
-          <input name="description" type="text" placeholder="desc"/>
-          <input name="tags" type="text" placeholder="tags"/>
-          <input class="btn btn-danger" type="submit" />
-        </form>
-
-        <div id="list-items"></div>
-        <div id="image-display"></div>
       </div>
     </body>
 </html>
