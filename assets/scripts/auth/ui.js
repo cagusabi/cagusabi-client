@@ -1,6 +1,7 @@
 'use strict'
 const pkg = 'auth.ui'
 
+const config = require('../config')
 const store = require('../store')
 const util = require('../util')
 const loaderApi = require('../loader/api.js')
@@ -8,9 +9,9 @@ const loaderUi = require('../loader/ui.js')
 
 const onSignUpSuccess = () => {
   util.logMessage(`${pkg}.onSignUpSuccess()`, 'Signed up successfully!')
-  $('#user-message-modal-title').text('Sign Up')
-  $('#user-message-modal-body').text('Signed up successfully!')
-  $('#user-message-modal').modal('show')
+  $(config.userMessageModalTitle).text(config.userMessages.onSignUp.title)
+  $(config.userMessageModalBody).text(config.userMessages.onSignUp.success)
+  $(config.userMessageModalID).modal('show')
   $('form').trigger('reset')
 }
 
@@ -25,9 +26,9 @@ const onSignUpFailure = () => {
 const onSignInSuccess = (responseData) => {
   store.user = responseData.user
   util.logMessage(`${pkg}.onSignInSuccess()`, 'Signed in successfully!')
-  $('#user-message-modal-title').text('Sign In')
-  $('#user-message-modal-body').text('Signed in successfully!')
-  $('#user-message-modal').modal('show')
+  $(config.userMessageModalTitle).text(config.userMessages.onSignIn.title)
+  $(config.userMessageModalBody).text(config.userMessages.onSignIn.success)
+  $(config.userMessageModalID).modal('show')
   $('#sign-in').hide()
   $('#sign-up-btn').hide()
   $('#sign-in-btn').hide()
@@ -52,6 +53,7 @@ const onSignInFailure = () => {
 }
 
 const onSignOutSuccess = () => {
+  store.user = {}
   util.logMessage(`${pkg}.onSignOutSuccess()`, 'Signed out successfully!')
   $('#auth-message').html('Signed out successfully!')
   $('#auth-message').fadeIn('slow')
