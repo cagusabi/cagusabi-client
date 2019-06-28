@@ -61,12 +61,12 @@
     <p>
       {{#if upload.editable}}
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">>
           Edit
         </button>
         <button class="btn btn-danger remove-upload" data-id="{{upload._id}}">Take it down!</button>
         <!-- MODAL START -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
