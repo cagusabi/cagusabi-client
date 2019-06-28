@@ -32,6 +32,7 @@ const onSignInSuccess = (responseData) => {
   $('#sign-up-btn').hide()
   $('#sign-in-btn').hide()
   $('#change-password-btn').show()
+  $('#uploadButton').show()
   $('#sign-out-btn').show()
   $('#image-uploader').show()
   $('form').trigger('reset')
@@ -60,6 +61,7 @@ const onSignOutSuccess = () => {
   $('#change-password-btn').hide()
   $('#sign-out-btn').hide()
   $('#image-uploader').hide()
+  $('#uploadButton').hide()
   $('.content').empty()
 }
 

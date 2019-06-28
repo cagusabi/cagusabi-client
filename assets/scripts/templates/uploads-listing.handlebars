@@ -6,13 +6,10 @@
 
 {{#each uploads as |upload|}}
 
-  <section data-id="{{upload.id}}">
-
-
+  <section data-id="{{upload.id}}" class="images">
     <h3>
       {{upload.name}}
     </h3>
-    <h6>Description:</h6>
     <p>
       {{#if upload.description}}
         {{upload.description}}
@@ -22,97 +19,83 @@
     </p>
     <p>
 
-      <div class="col-lg-6">
-              <div class="feature-item">
-                <!-- Button trigger modal -->
-                <img src={{upload.url}} class="img-responsive" style="max-width: 50%" alt="" type="button" class="img-fluid" data-toggle="modal" data-target="#exampleModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">
+      <div>
+        <div class="feature-item">
+          <!-- Button trigger modal -->
+          <img src={{upload.url}} class="img-responsive" style="max-width: 100%" alt="" type="button" class="img-fluid" data-toggle="modal" data-target="#exampleModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">
 
-                <!-- Modal -->
-                <div class="modal fade bd-example-modal-lg" id="exampleModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="{{upload._id}}">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body text-center d-block" data-id="{{upload._id}}">
-                        <img src={{upload.url}} class="img-responsive" style="max-width: 100%" />
-                      </div>
-                      <div class="modal-footer">
-                        <a href="{{upload.url}}" target=“_blank”>
-                          <button type=“button” class=“btn btn-secondary”>
-                            Open
-                          </button>
-                        </a>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
+          <!-- Modal -->
+          <div class="modal fade bd-example-modal-lg" id="exampleModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="{{upload._id}}">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center d-block" data-id="{{upload._id}}">
+                  <img src={{upload.url}} class="img-responsive" style="max-width: 100%" />
+                </div>
+                <div class="modal-footer">
+                  <a href="{{upload.url}}" target=“_blank”>
+                    <button type=“button” class=“btn btn-secondary”>
+                      Open
+                    </button>
+                  </a>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
     </p>
-    <h6>Submitted by:</h6>
-    <p>
-      {{splitEmail upload.email}}
-    </p>
-    <h6>Submit Date:</h6>
-    <p>
-      <!-- createdAt gives you this ugly format: "2019-06-26T14:27:27.538Z" -->
-      <!-- so this will need to be changed -->
-      {{limit upload.createdAt}}
-    </p>
-    <h6>Last Updated:</h6>
-    <p>
-      {{limit upload.updatedAt}}
-    </p>
+    <h6>Submitted by: <span>{{splitEmail upload.email}}</span></h6>
+    <h6>Submitted: <span>{{limit upload.createdAt}}</span></h6>
+    <h6>Updated: <span>{{limit upload.updatedAt}}</span></h6>
     <p>
       <h6>Tags:</h6>
       {{upload.tags}}
     </p>
     <p>
       {{#if upload.editable}}
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Edit
-      </button>
-      <button class="btn btn-danger remove-upload" data-id="{{upload._id}}">Take it down!</button>
-      <!-- MODAL START -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- FORM START -->
-              <div class="edit-upload-buttons">
-                <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group">
-                  <input name="upload[name]" type="text" placeholder="name" />
-                  <input name="upload[description]" type="text" placeholder="description"/>
-                  <input name="upload[tags]" type="text" placeholder="tags"/>
-                  <input type ='submit' value='update' class="btn btn-outline-info">
-                </form>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">>
+          Edit
+        </button>
+        <button class="btn btn-danger remove-upload" data-id="{{upload._id}}">Take it down!</button>
+        <!-- MODAL START -->
+        <div class="modal fade" id="editModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <!-- FORM END -->
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <div class="modal-body">
+                <!-- FORM START -->
+                <div class="edit-upload-buttons">
+                  <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group">
+                    <input name="upload[name]" type="text" placeholder="name" />
+                    <input name="upload[description]" type="text" placeholder="description" />
+                    <input name="upload[tags]" type="text" placeholder="tags" />
+                    <input id="editClose" type='submit' value='update' class="btn btn-outline-info">
+                  </form>
+                </div>
+                <!-- FORM END -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- MODAL END -->
+        <!-- MODAL END -->
 
       {{/if}}
-    </p>
-    <!-- we don't have partials right now, but this is how we would insert one -->
-  </section>
 
+  </section>
 {{/each}}

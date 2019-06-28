@@ -9,6 +9,7 @@ const onImageUploadSuccess = apiResponse => {
   util.logMessage(`${pkg}.onImageUploadSuccess()`)
   $('.owner-' + apiResponse.upload._id).text('Owner username: ' + store.user.email)
   util.logObject(apiResponse)
+  $('form').trigger('reset')
   $('#image-display').html(`<img src=${apiResponse.upload.url} />`)
 }
 
@@ -19,10 +20,12 @@ const onIndexSuccess = responseData => {
   // const uploadsAndUser = responseData.upload
   const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: responseData.uploads })
   $('.content').html(indexUploadsHandlebars)
+  $('.modal-backdrop').remove()
 }
 
 const onImageUpdateSuccess = () => {
   util.logMessage(`${pkg}.onImageUpdateSuccess()`, 'Image updated successfully!')
+  $('form').trigger('reset')
 }
 
 const onImageUpdateFailure = () => {
