@@ -7,6 +7,8 @@
 {{#each uploads as |upload|}}
 
   <section data-id="{{upload.id}}">
+
+
     <h3>
       {{upload.name}}
     </h3>
@@ -40,30 +42,42 @@
     </p>
     <p>
       {{#if upload.editable}}
-      <!-- edit-upload-button brings out the "update" and "delete" buttons -->
-      <!-- example here: https://sashabausheva.github.io/event-planner-full-stack-client (create event and try updating it) -->
-      <!-- we don't have to have it -->
-        <div class="edit-upload-buttons">
-          <button class="btn btn-danger remove-upload" data-id="{{upload._id}}">Take it down!</button>
-
-          <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group">
-            <input name="upload[name]" type="text" placeholder="name" />
-            <input name="upload[description]" type="text" placeholder="description"/>
-            <input name="upload[tags]" type="text" placeholder="tags"/>
-            <input type ='submit' value='update' class="btn btn-outline-info">
-          </form>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Edit
+      </button>
+      <button class="btn btn-danger remove-upload" data-id="{{upload._id}}">Take it down!</button>
+      <!-- MODAL START -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- FORM START -->
+              <div class="edit-upload-buttons">
+                <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group">
+                  <input name="upload[name]" type="text" placeholder="name" />
+                  <input name="upload[description]" type="text" placeholder="description"/>
+                  <input name="upload[tags]" type="text" placeholder="tags"/>
+                  <input type ='submit' value='update' class="btn btn-outline-info">
+                </form>
+              </div>
+              <!-- FORM END -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
         </div>
-        <!-- right now, the form won't be displayed unless you click the edit-upload-button -->
-        <!-- if we want to make it into a modal, we will need to structure it differently -->
-        <form class="edit-event form-inline" data-id="{{upload.id}}" id="update-upload-{{upload.id}}" style="display:none">
-            <legend>Enter New Info:</legend>
-            <!-- again, not sure what the key-property syntax would look like here -->
-            <input type="text" name="name" placeholder="Name">
-            <input type="text" name="description" placeholder="Description">
-            <!-- we will have to allow multiple tag input somehow, unless we want to only allow one tag per picture -->
-            <input type="text" name="tags" placeholder="Date" required>
-            <input type="submit" value="Update Photo!" class="btn btn-outline-info">
-        </form>
+      </div>
+      <!-- MODAL END -->
+
       {{/if}}
     </p>
     <!-- we don't have partials right now, but this is how we would insert one -->
