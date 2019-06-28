@@ -44,7 +44,7 @@ const onSignInSuccess = (responseData) => {
 
 const onSignInFailure = () => {
   util.logMessage(`${pkg}.onSignInFailure()`, 'Sign in failed!')
-  $('#auth-message').html('Failed to sign up')
+  $('#auth-message').html('Failed to sign in')
   $('#auth-message').fadeIn('slow')
   $('form').trigger('reset')
   setTimeout(() => $('#auth-message').fadeOut('slow'), 3000)
