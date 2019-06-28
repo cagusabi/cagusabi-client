@@ -1,0 +1,70 @@
+<!-- uploads will be passed here from ui. their id's will likely be stored in store -->
+<!-- we would pass them like this, in getUploadsSuccess: -->
+<!-- const showUploadsHtml = showUploadsTemplate({ uploads: data.uploads }) -->
+<!-- except I'm not sure the above line is datting into the right key/value -->
+<!-- we will figure it out tomorrow (Thursday) -->
+
+{{#each uploads as |upload|}}
+
+  <section data-id="{{upload.id}}">
+    <h3>
+      {{upload.name}}
+    </h3>
+    <h6>Description:</h6>
+    <p>
+      {{#if upload.description}}
+        {{upload.description}}
+      {{else}}
+        No description provided.
+      {{/if}}
+    </p>
+    <p>
+      <img src={{upload.url}} />
+    </p>
+    <h6>Submitted by:</h6>
+    <p>
+      {{upload._id}}
+    </p>
+    <h6>Submitted by (email):</h6>
+    <p>
+      {{upload.email}}
+    </p>
+    <h6>Submit Date:</h6>
+    <p>
+      <!-- createdAt gives you this ugly format: "2019-06-26T14:27:27.538Z" -->
+      <!-- so this will need to be changed -->
+      {{limit upload.createdAt}}
+    </p>
+    <h6>Last Updated:</h6>
+    <p>
+      {{limit upload.updatedAt}}
+    </p>
+    <p>
+      {{upload.tags}}
+    </p>
+    <p>
+      {{#if upload.editable}}
+      <!-- edit-upload-button brings out the "update" and "delete" buttons -->
+      <!-- example here: https://sashabausheva.github.io/event-planner-full-stack-client (create event and try updating it) -->
+      <!-- we don't have to have it -->
+        <div class="edit-upload-buttons">
+          <button class="btn btn-danger remove-upload" data-id="{{upload.id}}">Take it down!</button>
+          <button class="btn btn-info update-upload-button" data-id="{{upload.id}}">Update</button>
+        </div>
+        <!-- right now, the form won't be displayed unless you click the edit-upload-button -->
+        <!-- if we want to make it into a modal, we will need to structure it differently -->
+        <form class="edit-event form-inline" data-id="{{upload.id}}" id="update-upload-{{upload.id}}" style="display:none">
+            <legend>Enter New Info:</legend>
+            <!-- again, not sure what the key-property syntax would look like here -->
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="description" placeholder="Description">
+            <!-- we will have to allow multiple tag input somehow, unless we want to only allow one tag per picture -->
+            <input type="text" name="tags" placeholder="Date" required>
+            <input type="submit" value="Update Photo!" class="btn btn-outline-info">
+        </form>
+      {{/if}}
+    </p>
+    <!-- we don't have partials right now, but this is how we would insert one -->
+  </section>
+
+{{/each}}

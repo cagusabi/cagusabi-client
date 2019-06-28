@@ -4,12 +4,9 @@
 
 'use strict'
 
-const limit = (str, length) => {
-  if (str.length <= length) {
-    return str
-  } else {
-    return str.substring(0, length) + '...'
-  }
+const limit = (date) => {
+  const newDate = date.split('T')[0]
+  return newDate
 }
 
 module.exports = limit
