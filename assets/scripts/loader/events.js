@@ -38,7 +38,9 @@ const onImageRemove = event => {
   event.preventDefault()
 
   api.imageRemove(id)
-    .then(ui.onRemoveSuccess)
+  .then(res => {
+    onImagesLoad(event)
+  })
     .catch(ui.onRemoveFailure)
 }
 
