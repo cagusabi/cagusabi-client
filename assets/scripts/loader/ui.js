@@ -15,13 +15,23 @@ const onImageUploadSuccess = apiResponse => {
 const onIndexSuccess = responseData => {
   util.logMessage(`${pkg}.onIndexSuccess()`)
   util.logObject(responseData)
-  // console.log("USER EMAIL" + store.user.email)
+  // util.logMessage(`${pkg}.onIndexSuccess()`, 'USER EMAIL ' + store.user.email)
   // const uploadsAndUser = responseData.upload
   const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: responseData.uploads })
   $('.content').html(indexUploadsHandlebars)
 }
 
+const onImageUpdateSuccess = () => {
+  util.logMessage(`${pkg}.onImageUpdateSuccess()`, 'Image updated successfully!')
+}
+
+const onImageUpdateFailure = () => {
+  util.logMessage(`${pkg}.onImageUpdateFailure()`, 'Image update failed!')
+}
+
 module.exports = {
   onImageUploadSuccess,
-  onIndexSuccess
+  onIndexSuccess,
+  onImageUpdateSuccess,
+  onImageUpdateFailure
 }
