@@ -48,8 +48,14 @@
       <!-- example here: https://sashabausheva.github.io/event-planner-full-stack-client (create event and try updating it) -->
       <!-- we don't have to have it -->
         <div class="edit-upload-buttons">
-          <button class="btn btn-danger remove-upload" data-id="{{upload.id}}">Take it down!</button>
-          <button class="btn btn-info update-upload-button" data-id="{{upload.id}}">Update</button>
+          <button class="btn btn-danger remove-upload" data-id="{{upload._id}}">Take it down!</button>
+
+          <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group">
+            <input name="upload[name]" type="text" placeholder="name" />
+            <input name="upload[description]" type="text" placeholder="description"/>
+            <input name="upload[tags]" type="text" placeholder="tags"/>
+            <input type ='submit' value='update' class="btn btn-outline-info">
+          </form>
         </div>
         <!-- right now, the form won't be displayed unless you click the edit-upload-button -->
         <!-- if we want to make it into a modal, we will need to structure it differently -->
