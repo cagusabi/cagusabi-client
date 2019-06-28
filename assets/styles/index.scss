@@ -1,14 +1,81 @@
 @import '~bootstrap/scss/bootstrap';
 
+$main-color: #f7b354;
+$dark-blue: #1872ab;
+
 body {
-  background-color: #f7b354;
+  background-color: $main-color;
   color: white;
   font-family: 'Cabin Sketch', sans-serif;
 }
-
 // .wrapper {
 //   left: 50%;
 //   position: fixed;
 //   top: 50%;
 //   transform: translate(-50%, -50%);
 // }
+
+.modal-title {
+  color: #000;
+}
+
+nav {
+  background-color: $dark-blue;
+}
+
+.modal-body {
+  color: #000;
+}
+
+.content {
+  // font-family: 'Source Sans Pro', sans-serif;
+  // margin-top: 20px;
+  // display:flex;
+  // @include make-row;
+  // justify-content: center;
+  // display: flex;
+  background-color: green;
+  @include media-breakpoint-up(sm) {
+    column-count: 2;
+}
+  @include media-breakpoint-up(md) {
+    column-count: 3;
+}
+  @include media-breakpoint-up(lg) {
+    column-count: 4;
+  }
+  margin-top: 5vh;
+}
+
+.images {
+    // @include make-col-ready;
+    background: blue;
+    border: 1px solid;
+    margin-bottom: 1rem;
+    // border-right: 1px solid;
+    cursor: pointer;
+    outline: none;
+    padding: 1rem;
+    // overflow: hidden;
+    break-inside: avoid;
+    position: relative;
+    text-align: center;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    small {
+      color: black;
+      display: block;
+      font-size: 1rem;
+    }
+
+    .handwritten {
+      font-family: 'Indie Flower', cursive;
+    }
+  }

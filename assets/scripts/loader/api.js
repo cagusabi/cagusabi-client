@@ -16,14 +16,14 @@ const imageUpload = formData => {
   })
 }
 
-const imageUpdate = function (formData) {
-  console.log(formData.id)
+const imageUpdate = function(id, formData) {
+  console.log("THIS IS ID" + id)
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     method: 'PATCH',
-    url: config.apiUrl + '/uploads/' + formData.upload.id,
+    url: config.apiUrl + '/uploads/' + id,
     data: formData // then we can just send it as is because it's already formatted
 
     // you use this because StackOverFlow. but basically you just don't want jQuery to interfere, because we've already set the content type
@@ -31,8 +31,7 @@ const imageUpdate = function (formData) {
   })
 }
 
-const imageIndex = function () {
-  console.log('ui imageIndex ran')
+const imageIndex = function() {
   return $.ajax({
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -42,8 +41,19 @@ const imageIndex = function () {
   })
 }
 
+const imageRemove = function(id) {
+  return $.ajax({
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    method: 'DELETE',
+    url: config.apiUrl + '/uploads/' + id
+  })
+}
+
 module.exports = {
   imageUpload,
   imageUpdate,
-  imageIndex
+  imageIndex,
+  imageRemove
 }
