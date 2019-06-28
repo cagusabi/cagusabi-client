@@ -10,7 +10,7 @@ const onImageUploadSuccess = apiResponse => {
 }
 
 const onIndexSuccess = responseData => {
-  console.log(responseData.uploads)
+  console.log(responseData)
   // console.log("USER EMAIL" + store.user.email)
   // const uploadsAndUser = responseData.upload
   const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: responseData.uploads })
