@@ -20,6 +20,7 @@ const onIndexSuccess = responseData => {
   // const uploadsAndUser = responseData.upload
   const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: responseData.uploads })
   $('.content').html(indexUploadsHandlebars)
+  $('form').trigger('reset')
   $('.modal-backdrop').remove()
 }
 

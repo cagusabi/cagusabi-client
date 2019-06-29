@@ -46,7 +46,7 @@
           </div>
           <!-- title & welcome message -->
           <h1>CAGUSABI Image Uploader</h1>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadImageModal" id='uploadButton'>
+          <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#uploadImageModal" id='uploadButton'>
             Upload a Photo!
           </button>
           <!-- MODAL START -->
@@ -54,7 +54,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="uploadImageModalLabel">Modal title</h5>
+                  <h5 class="modal-title-upload" id="uploadImageModalLabel"></h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -62,17 +62,16 @@
                 <div class="modal-body">
                   <!-- FORM START -->
                   <form id="image-uploader" enctype="multipart/form-data" class="form-group">
-                    <input name="file" type="file" />
-                    <input name="name" type="text" placeholder="name" />
+                    <input name="file" type="file" required/>
+                    <input name="name" type="text" placeholder="name" required/>
                     <input name="description" type="text" placeholder="desc"/>
-                    <input name="tags" type="text" placeholder="tags"/>
+                    <input name="tags" type="text" placeholder="tags" required/>
                     <input class="btn btn-danger" type="submit" />
                   </form>
                   <!-- FORM END -->
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>
@@ -101,9 +100,9 @@
                 <form id="sign-up">
                   <div class="container form-group">
                     <label for="formGroupSignIn">Sign Up</label>
-                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email">
-                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password">
-                    <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Password Confirmation">
+                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required>
+                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required>
+                    <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Password Confirmation" required>
                     <br />
                     <small>
                       <p>You can sign in using these sample credentials:<br />
@@ -118,8 +117,8 @@
                 <form id="sign-in">
                   <div class="container form-group">
                     <label for="formGroupSignIn">Sign In</label>
-                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email">
-                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password">
+                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required>
+                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required>
                     <br />
                     <small>
                       <p>You can sign in using these sample credentials:<br />
@@ -145,8 +144,8 @@
                     <div class="modal-body">
                       <form id="change-password" class="container auth-forms">
                         <div class="form-group">
-                          <input class="form-control" name="passwords[old]" type="password" placeholder="Old Password">
-                          <input class="form-control" name="passwords[new]" type="password" placeholder="New Password">
+                          <input class="form-control" name="passwords[old]" type="password" placeholder="Old Password" required>
+                          <input class="form-control" name="passwords[new]" type="password" placeholder="New Password" required>
                           <br />
                           <input type="submit" class="btn btn-secondary" value="Change It!">
                         </div>

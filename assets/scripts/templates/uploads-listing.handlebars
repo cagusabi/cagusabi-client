@@ -3,7 +3,6 @@
 <!-- const showUploadsHtml = showUploadsTemplate({ uploads: data.uploads }) -->
 <!-- except I'm not sure the above line is datting into the right key/value -->
 <!-- we will figure it out tomorrow (Thursday) -->
-
 {{#each uploads as |upload|}}
 
   <section data-id="{{upload.id}}" class="images">
@@ -66,8 +65,9 @@
         </button>
         <button class="btn btn-danger remove-upload" data-id="{{upload._id}}">Take it down!</button>
         <!-- MODAL START -->
-        <div class="modal fade" id="editModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+
+        <div class="modal fade" id="editModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+          <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="editModalLabel">Modal title</h5>
@@ -78,7 +78,7 @@
               <div class="modal-body">
                 <!-- FORM START -->
                 <div class="edit-upload-buttons">
-                  <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group">
+                  <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group" required>
                     <input name="upload[name]" type="text" placeholder="name" />
                     <input name="upload[description]" type="text" placeholder="description" />
                     <input name="upload[tags]" type="text" placeholder="tags" />
