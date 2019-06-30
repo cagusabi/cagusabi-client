@@ -29,7 +29,7 @@ const onSignInSuccess = (responseData) => {
   $('form').trigger('reset')
   loaderApi.imageIndex()
     .then(loaderUI.onIndexSuccess)
-    .catch(loaderUI.failure)
+    .catch(loaderUI.onIndexFailure)
   // const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: store.uploads })
   // $('.content').html(indexUploadsHandlebars)
 }

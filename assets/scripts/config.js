@@ -17,8 +17,28 @@ const userMessages = {
   },
   onSignOut: {
     title: 'Sign Out',
-    success: 'Goodbye! Hope to see you soon!',
+    success: 'Goodbye! Hope to see you again soon!',
     failure: 'Oops... Sign out failed. Weird. Please try again.'
+  },
+  onIndex: {
+    title: 'Photo Retrieval',
+    success: 'Photo retrieval successful.', // We should never use this
+    failure: 'Whoa... We couldn\'t retrieve photos. Please sign out and sign in again!'
+  },
+  onImageUpload: {
+    title: 'Image Upload',
+    success: 'Image uploaded successfully!', // We should never use this
+    failure: 'Image could not be uploaded. Please try again!'
+  },
+  onImageUpdate: {
+    title: 'Image Update',
+    success: 'Image updated successfully!', // We should never use this'
+    failure: 'Image could not be updated. Please try again!'
+  },
+  onImageRemove: {
+    title: 'Image Remove',
+    success: 'Image updated successfully!', // We should never use this'
+    failure: 'Image could not be removed. Please try again!'
   }
 }
 

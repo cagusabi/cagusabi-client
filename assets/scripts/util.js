@@ -53,6 +53,7 @@ const displayMessageModal = (method, method2, successFlag) => {
   }
 
   logMessage(method, message)
+  $('.modal-backdrop').add()
   $(config.userMessageModalTitle).text(title)
   $(config.userMessageModalBody).text(message)
   $(config.userMessageModalID).modal('show')
