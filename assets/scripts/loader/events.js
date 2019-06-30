@@ -1,10 +1,14 @@
 'use strict'
+const pkg = 'loader.events'
+
 const api = require('./api')
 const ui = require('./ui')
+const util = require('../util')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onImagesLoad = event => {
   event.preventDefault()
+  util.logMessage(`${pkg}.onImagesLoad()`)
 
   api.imageIndex()
     .then(ui.onIndexSuccess)
@@ -13,7 +17,10 @@ const onImagesLoad = event => {
 
 const onImageUpload = event => {
   event.preventDefault()
+  util.logMessage(`${pkg}.onImageUpload()`)
+
   const formData = new FormData(event.target)
+  util.logObject(formData)
 
   api.imageUpload(formData)
     .then(res => {
@@ -24,10 +31,14 @@ const onImageUpload = event => {
 
 const onImageUpdate = event => {
   event.preventDefault()
-  const id = $(event.target).data('id')
-  $('.modal-backdrop').remove()
+  util.logMessage(`${pkg}.onImageUpdate()`)
 
+  const id = $(event.target).data('id')
+  util.logMessage(`${pkg}.onImageUpdate()`, `ID = ${id}`)
+
+  $('.modal-backdrop').remove()
   const formData = getFormFields(event.target)
+  util.logObject(formData)
 
   api.imageUpdate(id, formData)
     .then(() => {
@@ -38,8 +49,11 @@ const onImageUpdate = event => {
 }
 
 const onImageRemove = event => {
-  const id = $(event.target).data('id')
   event.preventDefault()
+  util.logMessage(`${pkg}.onImageUpdate()`)
+
+  const id = $(event.target).data('id')
+  util.logMessage(`${pkg}.onImageRemove()`, `ID = ${id}`)
 
   api.imageRemove(id)
     .then(res => {
