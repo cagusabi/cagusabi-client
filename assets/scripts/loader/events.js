@@ -31,6 +31,7 @@ const onImageUpload = event => {
   api.imageUpload(formData)
     .then(res => {
       // Call onImagesLoad() if successful.
+      $('.uploadMsg').text('Upload Succesful!')
       onImagesLoad(event)
     })
     .then(ui.onImageUploadSuccess)
@@ -80,7 +81,12 @@ const onImageRemove = event => {
     .catch(ui.onImageRemoveFailure)
 }
 
+const uploadMsgReset = () => {
+  $('.uploadMsg').text('Upload a Photo')
+}
+
 const addHandlers = () => {
+  $('#uploadButton').on('click', uploadMsgReset)
   $('#image-update').on('submit', onImageUpdate)
   $('#image-uploader').on('submit', onImageUpload)
   $('.content').on('click', '.remove-upload', onImageRemove)
