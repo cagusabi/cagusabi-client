@@ -4,20 +4,9 @@
 <!-- except I'm not sure the above line is datting into the right key/value -->
 <!-- we will figure it out tomorrow (Thursday) -->
 {{#each uploads as |upload|}}
-
+<div class="section-wrapper">
   <section data-id="{{upload.id}}" class="images">
-    <h3>
-      {{upload.name}}
-    </h3>
     <p>
-      {{#if upload.description}}
-        {{upload.description}}
-      {{else}}
-        No description provided.
-      {{/if}}
-    </p>
-    <p>
-
       <div>
         <div class="feature-item">
           <!-- Button trigger modal -->
@@ -28,7 +17,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Preview</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -38,11 +27,11 @@
                 </div>
                 <div class="modal-footer">
                   <a href="{{upload.url}}" target=“_blank”>
-                    <button type=“button” class=“btn btn-secondary”>
-                      Open
+                    <button type=“button” class="btn btn-danger">
+                      Full Size
                     </button>
                   </a>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
@@ -50,14 +39,26 @@
         </div>
       </div>
     </p>
-    <h6>Submitted by: <span>{{splitEmail upload.email}}</span></h6>
-    <h6>Submitted: <span>{{limit upload.createdAt}}</span></h6>
-    <h6>Updated: <span>{{limit upload.updatedAt}}</span></h6>
+    <h3 class="image-title">
+      {{upload.name}}
+    </h3>
+    <div class="upload-data">
+    <h6 class="image-description">
+      {{#if upload.description}}
+        {{upload.description}}
+      {{else}}
+        No description provided.
+      {{/if}}
+    </h6>
+    <p class="text-handlebars">Submitted by:</p> <span class="data-handlebars">{{splitEmail upload.email}}</span><br />
+    <p class="text-handlebars">Submitted on:</p> <span class="data-handlebars">{{limit upload.createdAt}}</span><br />
+    <p class="text-handlebars">Updated on:</p><span class="data-handlebars">{{limit upload.updatedAt}}</span><br />
+      <h6 class="tags">tags:</h6>
     <p>
-      <h6>Tags:</h6>
       {{upload.tags}}
     </p>
-    <p>
+  </div>
+    <p class="text-handlebars">
       {{#if upload.editable}}
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">>
@@ -98,4 +99,5 @@
       {{/if}}
 
   </section>
+</div>
 {{/each}}

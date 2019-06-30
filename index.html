@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>CAGUSABI Image Uploader</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-      <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900|Cabin+Sketch:400,700" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900" rel="stylesheet">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -19,10 +19,10 @@
           <!-- navbar -->
           <nav class="navbar-nav" id="navbar">
             <div class="container">
-              <button id="sign-up-btn" class="btn btn-secondary">Sign Up</button>
-              <button id="sign-in-btn" class="btn btn-secondary">Sign In</button>
-              <button id="change-password-btn" type="button" class="btn btn-secondary hidden" data-toggle="modal" data-target="#change-pw">Change Password</button>
-              <button id="sign-out-btn" class="btn btn-secondary hidden">Sign Out</button>
+              <button id="sign-up-btn" class="btn btn-outline-primary">Sign Up</button>
+              <button id="sign-in-btn" class="btn btn-outline-primary">Sign In</button>
+              <button id="change-password-btn" type="button" class="btn btn-outline-primary hidden" data-toggle="modal" data-target="#change-pw">Change Password</button>
+              <button id="sign-out-btn" class="btn btn-outline-primary hidden">Sign Out</button>
             </div>
           </nav>
           <!-- navbar end -->
@@ -46,7 +46,7 @@
           </div>
           <!-- title & welcome message -->
           <h1>CAGUSABI Image Uploader</h1>
-          <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#uploadImageModal" id='uploadButton'>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#uploadImageModal" id='uploadButton'>
             Upload a Photo!
           </button>
           <!-- MODAL START -->
@@ -71,19 +71,16 @@
                   <!-- FORM END -->
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
           <!-- MODAL END -->
-          <hr>
-
 
           <section class="welcome-message">
-            <p>Welcome to Cagusabi, the bespoke image loader</p>
-
-            <br />
+            <h5>Welcome to Cagusabi, the bespoke image loader.</h5>
+          <img id="camera" src="public/images/camera.png"
             <small>
             <p>You can sign in using these sample credentials:<br />
               <b>Email:</b> sample@sample<br />
@@ -103,7 +100,6 @@
                     <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required>
                     <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required>
                     <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Password Confirmation" required>
-                    <br />
                     <small>
                       <p>You can sign in using these sample credentials:<br />
                         <b>Email:</b> sample@sample<br />
@@ -119,14 +115,13 @@
                     <label for="formGroupSignIn">Sign In</label>
                     <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required>
                     <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required>
-                    <br />
                     <small>
                       <p>You can sign in using these sample credentials:<br />
                         <b>Email:</b> sample@sample<br />
                         <b>Password:</b> sample
                       </p>
                     </small>
-                    <input type="submit" class="btn btn-secondary" value="Submit">
+                    <input type="submit" class="btn btn-danger" value="Submit">
                   </div>
                 </form>
               </div>
@@ -147,7 +142,7 @@
                           <input class="form-control" name="passwords[old]" type="password" placeholder="Old Password" required>
                           <input class="form-control" name="passwords[new]" type="password" placeholder="New Password" required>
                           <br />
-                          <input type="submit" class="btn btn-secondary" value="Change It!">
+                          <input type="submit" class="btn btn-danger" value="Change It!">
                         </div>
                       </form>
                     </div>
