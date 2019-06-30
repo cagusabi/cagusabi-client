@@ -61,7 +61,7 @@ h1 {
   font-weight: bold;
 }
 
-.text-handlebars {
+.text-handlebars, .label-upload-form {
   text-transform: lowercase;
   float: left;
   text-align: left;
@@ -72,7 +72,7 @@ h1 {
   margin-top: 0;
 }
 
-.data-handlebars {
+.data-handlebars, .field-upload-form {
   float: right;
   text-align: right;
 }
@@ -87,6 +87,12 @@ h1 {
 
 .modal-open {
     overflow: visible;
+}
+
+.edit-upload-buttons, .upload-fields {
+  max-width: 60%;
+  text-align: justify;
+  margin: 0 auto;
 }
 
 .modal-title {
