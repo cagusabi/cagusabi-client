@@ -21,7 +21,8 @@ const onIndexSuccess = responseData => {
   const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: responseData.uploads })
   $('.content').html(indexUploadsHandlebars)
   $('form').trigger('reset')
-  $('.modal-backdrop').remove()
+  $('.modal-backdrop.modal-preview').remove()
+  $('.modal-backdrop.modal-upload').remove()
 }
 
 const onImageUpdateSuccess = () => {

@@ -12,12 +12,12 @@ const userMessages = {
   },
   onSignIn: {
     title: 'Sign In',
-    success: 'Signed in successfully!',
+    success: 'Welcome! View or submit your photos below!',
     failure: 'Sign in failed! Please try again.'
   },
   onSignOut: {
     title: 'Sign Out',
-    success: 'Goodbye!',
+    success: 'Goodbye! Hope to see you soon!',
     failure: 'Oops... Sign out failed. Weird. Please try again.'
   }
 }
