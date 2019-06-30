@@ -65,6 +65,7 @@ const onSignOutSuccess = () => {
   $('#image-uploader').hide()
   $('#uploadButton').hide()
   $('.content').empty()
+  $('.welcome-message').show()
 }
 
 const onSignOutFailure = () => {
