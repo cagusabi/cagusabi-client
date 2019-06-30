@@ -43,6 +43,12 @@ const onIndexFailure = responseData => {
   resetModalBackdrop()
 }
 
+const onImageUploadSuccess = () => {
+  util.displayMessageModal(`${pkg}.onImageUploadSuccess()`, 'onImageUpload', true)
+  $('form').trigger('reset')
+  resetModalBackdrop()
+}
+
 const onImageUploadFailure = () => {
   util.displayMessageModal(`${pkg}.onImageUploadFailure()`, 'onImageUpload', false)
   $('form').trigger('reset')
@@ -77,6 +83,7 @@ module.exports = {
   resetModalBackdrop,
   onIndexSuccess,
   onIndexFailure,
+  onImageUploadSuccess,
   onImageUploadFailure,
   onImageUpdateSuccess,
   onImageUpdateFailure,

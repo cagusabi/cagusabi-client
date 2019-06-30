@@ -33,6 +33,7 @@ const onImageUpload = event => {
       // Call onImagesLoad() if successful.
       onImagesLoad(event)
     })
+    .then(ui.onImageUploadSuccess)
     .catch(ui.onImageUploadFailure)
 }
 
