@@ -26,7 +26,12 @@ const onIndexSuccess = responseData => {
 
   // util.logMessage(`${pkg}.onIndexSuccess()`, 'USER EMAIL ' + store.user.email)
   // const uploadsAndUser = responseData.upload
-  const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: responseData.uploads })
+  const uploadedImages = responseData.uploads
+  const sortUploads = uploadedImages.sort(function (a) {
+    if (a.editable === true) return -1
+    if (a.editable === false) return 1
+  })
+  const indexUploadsHandlebars = indexHandlebarTemplate({ uploads: sortUploads })
   $('.content').html(indexUploadsHandlebars)
   $('form').trigger('reset')
   resetModalBackdrop()
