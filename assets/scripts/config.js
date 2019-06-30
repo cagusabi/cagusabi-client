@@ -32,12 +32,12 @@ const userMessages = {
   },
   onImageUpdate: {
     title: 'Image Update',
-    success: 'Image updated successfully!', // We should never use this'
+    success: 'Image updated successfully!',
     failure: 'Image could not be updated. Please try again!'
   },
   onImageRemove: {
     title: 'Image Remove',
-    success: 'Image updated successfully!', // We should never use this'
+    success: 'Image removed successfully!',
     failure: 'Image could not be removed. Please try again!'
   }
 }

@@ -56,6 +56,7 @@ const onImageUpdate = event => {
       onImagesLoad(event)
     })
     .then(ui.resetModalBackdrop)
+    .then(ui.onImageUpdateSuccess)
     .catch(ui.onImageUpdateFailure)
 }
 
@@ -74,6 +75,7 @@ const onImageRemove = event => {
       // Call onImagesLoad() if successful.
       onImagesLoad(event)
     })
+    .then(ui.onImageRemoveSuccess)
     .catch(ui.onImageRemoveFailure)
 }
 
