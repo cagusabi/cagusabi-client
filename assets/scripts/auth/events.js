@@ -20,7 +20,10 @@ document.getElementById('uploadButton').style.display = 'none'
 const onSignUp = (event) => {
   event.preventDefault()
   util.logMessage(`${pkg}.onSignUp()`)
+
   const formData = getFormFields(event.target)
+  util.logObject(formData)
+
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
@@ -34,7 +37,10 @@ const onSignUp = (event) => {
 const onSignIn = (event) => {
   event.preventDefault()
   util.logMessage(`${pkg}.onSignIn()`)
+
   const formData = getFormFields(event.target)
+  util.logObject(formData)
+
   api.signIn(formData)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
@@ -48,6 +54,7 @@ const onSignIn = (event) => {
 const onSignOut = (event) => {
   event.preventDefault()
   util.logMessage(`${pkg}.onSignOut()`)
+
   api.signOut()
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
@@ -61,8 +68,10 @@ const onSignOut = (event) => {
 const onChangePassword = (event) => {
   event.preventDefault()
   util.logMessage(`${pkg}.onChangePassword()`)
+
   const formData = getFormFields(event.target)
   util.logObject(formData)
+
   api.changePassword(formData)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
