@@ -85,10 +85,10 @@
                 <!-- FORM START -->
                 <div class="edit-upload-buttons">
                   <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group" required>
-                    <p> Name: <input name="upload[name]" type="text" placeholder="name" /></p>
-                  <p>Description: <input name="upload[description]" type="text" placeholder="description" /> </p>
-                    <p> Tags: <input name="upload[tags]" type="text" placeholder="tags" /> </p>
-                    <p><input id="editClose" type='submit' value='update' class="btn btn-danger"> </p>
+                    <p class="text-handlebars"> Name: </p><span class="data-handlebars"><input name="upload[name]" type="text" placeholder="name" /></span><br /><br />
+                  <p class="text-handlebars">Description: </p><span class="data-handlebars"><input name="upload[description]" type="text" placeholder="description" /> </span><br /><br />
+                    <p class="text-handlebars"> Tags: </p><span class="data-handlebars"><input name="upload[tags]" type="text" placeholder="tags" /> </span><br /></br />
+                    <center><p><input id="editClose" type='submit' value='update' class="btn btn-danger"> </p></center>
                   </form>
                 </div>
                 <!-- FORM END -->

@@ -60,15 +60,17 @@
                   </button>
                 </div>
                 <div class="modal-body">
+                  <div class="upload-fields">
                   <!-- FORM START -->
                   <form id="image-uploader" enctype="multipart/form-data" class="form-group">
-                  <p>  <input name="file" type="file" required/></p>
-                  <p>  Name: <input name="name" type="text" placeholder="name" required/> </p>
-                  <p>  Description: <input name="description" type="text" placeholder="desc"/> </p>
-                    <p>Tags: <input name="tags" type="text" placeholder="tags" required/> <p>
-                    <input class="btn btn-danger" type="submit" />
+                  <center><p> <input labelame="file" type="file" required/></p></center>
+                  <p class="label-upload-form">  Name: </p><span class="field-upload-form"><input name="name" type="text" placeholder="name" required/> </span><br /><br />
+                  <p class="label-upload-form">  Description: </p><span class="field-upload-form"><input name="description" type="text" placeholder="desc"/> </span><br /><br />
+                    <p class="label-upload-form">Tags: </p><span class="field-upload-form"><input name="tags" type="text" placeholder="tags" required/> </span><br /><br />
+                    <center><input class="btn btn-danger" type="submit" /></center>
                   </form>
                   <!-- FORM END -->
+                </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
