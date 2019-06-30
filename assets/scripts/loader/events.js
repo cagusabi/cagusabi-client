@@ -6,15 +6,21 @@ const ui = require('./ui')
 const util = require('../util')
 const getFormFields = require('../../../lib/get-form-fields')
 
+/*
+** This is the main images index call - this is called by multiple other methods.
+*/
 const onImagesLoad = event => {
   event.preventDefault()
   util.logMessage(`${pkg}.onImagesLoad()`)
 
   api.imageIndex()
     .then(ui.onIndexSuccess)
-    .catch(ui.onImageUploadFailure)
+    .catch(ui.onIndexFailure)
 }
 
+/*
+** Upload a given image
+*/
 const onImageUpload = event => {
   event.preventDefault()
   util.logMessage(`${pkg}.onImageUpload()`)
@@ -24,30 +30,38 @@ const onImageUpload = event => {
 
   api.imageUpload(formData)
     .then(res => {
+      // Call onImagesLoad() if successful.
       onImagesLoad(event)
     })
     .catch(ui.onImageUploadFailure)
 }
 
+/*
+** Update a fiven image
+*/
 const onImageUpdate = event => {
   event.preventDefault()
   util.logMessage(`${pkg}.onImageUpdate()`)
 
   const id = $(event.target).data('id')
   util.logMessage(`${pkg}.onImageUpdate()`, `ID = ${id}`)
+  ui.resetModalBackdrop()
 
-  $('.modal-backdrop').remove()
   const formData = getFormFields(event.target)
   util.logObject(formData)
 
   api.imageUpdate(id, formData)
     .then(() => {
+      // Call onImagesLoad() if successful.
       onImagesLoad(event)
     })
-    .then($('.modal-backdrop').remove())
-    .catch(ui.onImageUploadFailure)
+    .then(ui.resetModalBackdrop)
+    .catch(ui.onImageUpdateFailure)
 }
 
+/*
+** Remove an image
+*/
 const onImageRemove = event => {
   event.preventDefault()
   util.logMessage(`${pkg}.onImageUpdate()`)
@@ -57,9 +71,10 @@ const onImageRemove = event => {
 
   api.imageRemove(id)
     .then(res => {
+      // Call onImagesLoad() if successful.
       onImagesLoad(event)
     })
-    .catch(ui.onRemoveFailure)
+    .catch(ui.onImageRemoveFailure)
 }
 
 const addHandlers = () => {
