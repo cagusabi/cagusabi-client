@@ -36,7 +36,6 @@ const logObject = function (obj) {
 **    returns: nothing
 */
 const displayMessageModal = (method, method2, successFlag) => {
-  console.log(method2, successFlag)
   const messageObj = config.userMessages[method2]
   let title, message
 
