@@ -34,7 +34,7 @@ const onImageUpload = event => {
       $('.uploadMsg').text('Upload Succesful!')
       onImagesLoad(event)
     })
-    .then(ui.onImageUploadSuccess)
+    // .then(ui.onImageUploadSuccess)
     .catch(ui.onImageUploadFailure)
 }
 
