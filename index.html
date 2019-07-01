@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CAGUSABI Image Uploader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900" rel="stylesheet">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- header start -->
+    <header>
+      <!-- navbar -->
+      <nav class="navbar-nav" id="navbar">
+        <div class="container">
+          <button id="sign-up-btn" class="btn btn-outline-primary">Sign Up</button>
+          <button id="sign-in-btn" class="btn btn-outline-primary">Sign In</button>
+          <button id="change-password-btn" type="button" class="btn btn-outline-primary hidden" data-toggle="modal" data-target="#change-pw">Change Password</button>
+          <button id="sign-out-btn" class="btn btn-outline-primary hidden">Sign Out</button>
+        </div>
+      </nav>
+
+      <button type="button" id="aboutMeModalButton" class="btn btn-outline-danger" data-toggle="modal" data-target="#aboutMeModal">
+        About The Project & The Engineers
+      </button>
+      <div class="modal fade" id="aboutMeModal" tabindex="-1" role="dialog" aria-labelledby="aboutModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="aboutModal">About The Project & The Engineers</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h4><u>The Project</u> </h4>
+              <p>As a team our assignment was to build an app that allows users to upload images onto a virtual file system. Ordinary users can only read/download an image where as Owners can do anything to the images they own.</p>
+
+              <h4><u>The Engineers</u> </h4>
+              This was a team project for General Assembly's Software Engineering Immersive.
+              Team Cagusabi is comprised of:
+              <hr>
+              <li>Cameron DiGregorio: <a href="https://www.linkedin.com/in/cdigregorio/" target="_blank" class="aboutMeLink">LinkedIn</a>, <a href="https://digregorioc.github.io./" target="_blank" class="aboutMeLink"> Portfolio</a></li>
+              <li>Guy Benson: <a href="https://www.linkedin.com/in/guybbenson" target="_blank" class="aboutMeLink">LinkedIn</a>, <a href="https://gbbenson68.github.io/" target="_blank" class="aboutMeLink"> Portfolio</a></li>
+              <li>Sasha Bausheva: <a href="https://www.linkedin.com/in/sasha-bausheva" target="_blank" class="aboutMeLink">LinkedIn</a>, <a href="https://sashabausheva.github.io" target="_blank" class="aboutMeLink"> Portfolio</a></li>
+              <li>William Constantino: <a href="https://www.linkedin.com/in/william-constantino/" target="_blank" class="aboutMeLink">LinkedIn</a>, <a href="https://wcons.github.io./" target="_blank" class="aboutMeLink"> Portfolio</a></li>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- navbar end -->
+      <div class="modal" id="user-message-modal" tabindex="-1" role="dialog" aria-labelledby="user-message-modal-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="user-message-modal-title">DUMMY TITLE</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div id="user-message-modal-body" class="modal-body">
+              DUMMY BODY
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- title & welcome message -->
+      <h1>CAGUSABI Image Uploader</h1>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#uploadImageModal" id='uploadButton'>
+        Upload a Photo!
+      </button>
+      <!-- MODAL START -->
+      <div class="modal" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title-upload" id="uploadImageModalLabel"></h5>
+              <div class='uploadMsg'></div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="upload-fields">
+                <!-- FORM START -->
+                <form id="image-uploader" enctype="multipart/form-data" class="form-group">
+                  <center>
+                    <p> <input name="file" type="file" required /></p>
+                  </center>
+                  <p class="label-upload-form"> Name: </p><span class="field-upload-form"><input name="name" type="text" placeholder="name" required /> </span><br /><br />
+                  <p class="label-upload-form"> Description: </p><span class="field-upload-form"><input name="description" type="text" placeholder="desc" /> </span><br /><br />
+                  <p class="label-upload-form">Tags: </p><span class="field-upload-form"><input name="tags" type="text" placeholder="tags" required /> </span><br /><br />
+                  <center><input class="btn btn-danger" type="submit" /></center>
+                </form>
+                <!-- FORM END -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- MODAL END -->
+
+      <section class="welcome-message">
+        <h5>Welcome to Cagusabi, the bespoke image loader.</h5>
+        <img id="camera" src="public/images/camera.png" <small>
+        <p>You can sign in using these sample credentials:<br />
+          <b>Email:</b> sample@sample<br />
+          <b>Password:</b> sample
+        </p>
+        </small>
+      </section>
+
+      <p id="auth-message"></p>
+
+
+      <section class="auth-forms">
+        <div class="auth-forms" id="auth-forms">
+          <form id="sign-up">
+            <div class="container form-group">
+              <label for="formGroupSignIn">Sign Up</label>
+              <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required>
+              <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required>
+              <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Password Confirmation" required>
+              <small>
+                <p>You can sign in using these sample credentials:<br />
+                  <b>Email:</b> sample@sample<br />
+                  <b>Password:</b> sample
+                </p>
+              </small>
+              <input type="submit" class="btn btn-secondary" value="Submit">
+            </div>
+          </form>
+
+          <form id="sign-in">
+            <div class="container form-group">
+              <label for="formGroupSignIn">Sign In</label>
+              <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required>
+              <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required>
+              <small>
+                <p>You can sign in using these sample credentials:<br />
+                  <b>Email:</b> sample@sample<br />
+                  <b>Password:</b> sample
+                </p>
+              </small>
+              <input type="submit" class="btn btn-danger" value="Submit">
+            </div>
+          </form>
+        </div>
+
+        <!-- change password modal -->
+        <div class="modal" id="change-pw" tabindex="-1" role="dialog" aria-labelledby="changePasswordModal" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModalTitle">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="change-password" class="container auth-forms">
+                  <div class="form-group">
+                    <input class="form-control" name="passwords[old]" type="password" placeholder="Old Password" required>
+                    <input class="form-control" name="passwords[new]" type="password" placeholder="New Password" required>
+                    <br />
+                    <div class="modal-footer">
+                      <input type="submit" class="btn btn-danger" value="Change It!">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- change password modal end -->
+      </section>
+    </header>
+    <!-- header end -->
+
+    <div class="content">
+
+    </div>
+  </div>
+</body>
+
+</html>
