@@ -1,30 +1,116 @@
-@import '~bootstrap/scss/bootstrap';
+$primary: #f0f0f5;
+$danger: #cf7651;
 
-$main-color: #f7b354;
-$dark-blue: #1872ab;
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab:400,700|Julius+Sans+One|Poiret+One&display=swap');
+$main-color: #f0f0f5;
+$dark-teal: #244c53;
+$coral: #cf7651;
+$dark: #4d4c4c;
 
 body {
   background-color: $main-color;
-  color: white;
-  font-family: 'Cabin Sketch', sans-serif;
+  color: $dark;
+  font-weight: 400;
+  font-family: 'Josefin Slab', sans-serif;
+  text-align: center;
 }
-// .wrapper {
-//   left: 50%;
-//   position: fixed;
-//   top: 50%;
-//   transform: translate(-50%, -50%);
+
+// .btn-outline-primary:hover {
+//     color: white;
+//     background-color: $coral;
+//     border-color: #162936;
 // }
+
+#uploadButton {
+  box-shadow:(2px 2px 2px #5d4c4c);
+}
+
+.btn-outline-primary {
+  margin: 0.5rem;
+}
+
+.auth-forms {
+  max-width: 50vh;
+  margin: 0 auto;
+  input {
+    margin: .5rem;
+  }
+}
+
+h1 {
+  font-family: 'Julius Sans One', sans-serif;
+  font-weight: bold;
+  padding: 1rem;
+
+}
+
+.section-wrapper {
+  // opacity: .6;
+  transition: 0.3s;
+  &:hover {
+    // opacity: 1;
+  }
+}
+
+.image-title {
+  margin-top: .8rem;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  letter-spacing: .2rem;
+  font-weight: bold;
+}
+
+.text-handlebars, .label-upload-form {
+  text-transform: lowercase;
+  float: left;
+  text-align: left;
+}
+
+.image-description {
+  margin-bottom: .6rem;
+  margin-top: 0;
+}
+
+.data-handlebars, .field-upload-form {
+  float: right;
+  text-align: right;
+}
+
+.upload-data {
+  padding: 1rem;
+}
+
+.tags {
+  margin-top: 1rem;
+}
+
+.modal-open {
+    overflow: visible;
+}
+
+.edit-upload-buttons, .upload-fields {
+  max-width: 60%;
+  text-align: justify;
+  margin: 0 auto;
+}
 
 .modal-title {
   color: #000;
 }
 
 nav {
-  background-color: $dark-blue;
+  background-color: $coral;
+  text-align: center;
+
 }
 
 .modal-body {
   color: #000;
+}
+
+.modal-header {
+  font-size: 24px;
 }
 
 .content {
@@ -34,7 +120,6 @@ nav {
   // @include make-row;
   // justify-content: center;
   // display: flex;
-  background-color: green;
   @include media-breakpoint-up(sm) {
     column-count: 2;
 }
@@ -45,21 +130,22 @@ nav {
     column-count: 4;
   }
   margin-top: 5vh;
+  padding: 1rem;
 }
 
 .images {
-    // @include make-col-ready;
-    background: blue;
-    border: 1px solid;
+    background: white;
+    border: 1px solid white;
     margin-bottom: 1rem;
-    // border-right: 1px solid;
-    cursor: pointer;
     outline: none;
     padding: 1rem;
     // overflow: hidden;
     break-inside: avoid;
-    position: relative;
     text-align: center;
+    position: relative;
+    transition: 0.3s;
+    box-shadow:(2px 2px 2px #5d4c4c);
+
 
     p {
       margin-bottom: 0;
@@ -70,12 +156,17 @@ nav {
     }
 
     small {
-      color: black;
+      color: $dark;
       display: block;
       font-size: 1rem;
     }
 
-    .handwritten {
-      font-family: 'Indie Flower', cursive;
+    &:hover {
+      border: 1px solid $coral;
     }
   }
+
+#camera {
+  opacity: .9;
+  margin: 1rem;
+}

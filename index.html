@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>CAGUSABI Image Uploader</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-      <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900|Cabin+Sketch:400,700" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900" rel="stylesheet">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -19,14 +19,14 @@
           <!-- navbar -->
           <nav class="navbar-nav" id="navbar">
             <div class="container">
-              <button id="sign-up-btn" class="btn btn-secondary">Sign Up</button>
-              <button id="sign-in-btn" class="btn btn-secondary">Sign In</button>
-              <button id="change-password-btn" type="button" class="btn btn-secondary hidden" data-toggle="modal" data-target="#change-pw">Change Password</button>
-              <button id="sign-out-btn" class="btn btn-secondary hidden">Sign Out</button>
+              <button id="sign-up-btn" class="btn btn-outline-primary">Sign Up</button>
+              <button id="sign-in-btn" class="btn btn-outline-primary">Sign In</button>
+              <button id="change-password-btn" type="button" class="btn btn-outline-primary hidden" data-toggle="modal" data-target="#change-pw">Change Password</button>
+              <button id="sign-out-btn" class="btn btn-outline-primary hidden">Sign Out</button>
             </div>
           </nav>
           <!-- navbar end -->
-          <div class="modal fade" id="user-message-modal" tabindex="-1" role="dialog" aria-labelledby="user-message-modal-label" aria-hidden="true">
+          <div class="modal" id="user-message-modal" tabindex="-1" role="dialog" aria-labelledby="user-message-modal-label" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -46,45 +46,44 @@
           </div>
           <!-- title & welcome message -->
           <h1>CAGUSABI Image Uploader</h1>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadImageModal" id='uploadButton'>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#uploadImageModal" id='uploadButton'>
             Upload a Photo!
           </button>
           <!-- MODAL START -->
-          <div class="modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
+          <div class="modal" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="uploadImageModalLabel">Modal title</h5>
+                  <h5 class="modal-title-upload" id="uploadImageModalLabel"></h5>
+                  <div class='uploadMsg'></div>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
+                  <div class="upload-fields">
                   <!-- FORM START -->
                   <form id="image-uploader" enctype="multipart/form-data" class="form-group">
-                    <input name="file" type="file" />
-                    <input name="name" type="text" placeholder="name" />
-                    <input name="description" type="text" placeholder="desc"/>
-                    <input name="tags" type="text" placeholder="tags"/>
-                    <input class="btn btn-danger" type="submit" />
+                  <center><p> <input name="file" type="file" required/></p></center>
+                  <p class="label-upload-form">  Name: </p><span class="field-upload-form"><input name="name" type="text" placeholder="name" required/> </span><br /><br />
+                  <p class="label-upload-form">  Description: </p><span class="field-upload-form"><input name="description" type="text" placeholder="desc"/> </span><br /><br />
+                    <p class="label-upload-form">Tags: </p><span class="field-upload-form"><input name="tags" type="text" placeholder="tags" required/> </span><br /><br />
+                    <center><input class="btn btn-danger" type="submit" /></center>
                   </form>
                   <!-- FORM END -->
                 </div>
+                </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
           <!-- MODAL END -->
-          <hr>
-
 
           <section class="welcome-message">
-            <p>Welcome to Cagusabi, the bespoke image loader</p>
-
-            <br />
+            <h5>Welcome to Cagusabi, the bespoke image loader.</h5>
+          <img id="camera" src="public/images/camera.png"
             <small>
             <p>You can sign in using these sample credentials:<br />
               <b>Email:</b> sample@sample<br />
@@ -101,10 +100,9 @@
                 <form id="sign-up">
                   <div class="container form-group">
                     <label for="formGroupSignIn">Sign Up</label>
-                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email">
-                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password">
-                    <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Password Confirmation">
-                    <br />
+                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required>
+                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required>
+                    <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Password Confirmation" required>
                     <small>
                       <p>You can sign in using these sample credentials:<br />
                         <b>Email:</b> sample@sample<br />
@@ -118,22 +116,21 @@
                 <form id="sign-in">
                   <div class="container form-group">
                     <label for="formGroupSignIn">Sign In</label>
-                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email">
-                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password">
-                    <br />
+                    <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required>
+                    <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required>
                     <small>
                       <p>You can sign in using these sample credentials:<br />
                         <b>Email:</b> sample@sample<br />
                         <b>Password:</b> sample
                       </p>
                     </small>
-                    <input type="submit" class="btn btn-secondary" value="Submit">
+                    <input type="submit" class="btn btn-danger" value="Submit">
                   </div>
                 </form>
               </div>
 
               <!-- change password modal -->
-              <div class="modal fade" id="change-pw" tabindex="-1" role="dialog" aria-labelledby="changePasswordModal" aria-hidden="true">
+              <div class="modal" id="change-pw" tabindex="-1" role="dialog" aria-labelledby="changePasswordModal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -145,10 +142,13 @@
                     <div class="modal-body">
                       <form id="change-password" class="container auth-forms">
                         <div class="form-group">
-                          <input class="form-control" name="passwords[old]" type="password" placeholder="Old Password">
-                          <input class="form-control" name="passwords[new]" type="password" placeholder="New Password">
+                          <input class="form-control" name="passwords[old]" type="password" placeholder="Old Password" required>
+                          <input class="form-control" name="passwords[new]" type="password" placeholder="New Password" required>
                           <br />
-                          <input type="submit" class="btn btn-secondary" value="Change It!">
+                          <div class="modal-footer">
+                            <input type="submit" class="btn btn-danger" value="Change It!">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
                         </div>
                       </form>
                     </div>

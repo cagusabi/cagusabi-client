@@ -3,34 +3,22 @@
 <!-- const showUploadsHtml = showUploadsTemplate({ uploads: data.uploads }) -->
 <!-- except I'm not sure the above line is datting into the right key/value -->
 <!-- we will figure it out tomorrow (Thursday) -->
-
 {{#each uploads as |upload|}}
-
+<div class="section-wrapper">
   <section data-id="{{upload.id}}" class="images">
-    <h3>
-      {{upload.name}}
-    </h3>
     <p>
-      {{#if upload.description}}
-        {{upload.description}}
-      {{else}}
-        No description provided.
-      {{/if}}
-    </p>
-    <p>
-
       <div>
         <div class="feature-item">
           <!-- Button trigger modal -->
           <img src={{upload.url}} class="img-responsive" style="max-width: 100%" alt="" type="button" class="img-fluid" data-toggle="modal" data-target="#exampleModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">
 
           <!-- Modal -->
-          <div class="modal fade bd-example-modal-lg" id="exampleModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="{{upload._id}}">
+          <div class="modal bd-example-modal-lg" id="exampleModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="{{upload._id}}">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <h5 class="modal-title" id="exampleModalLabel">Preview</h5>
+                  <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
@@ -39,8 +27,8 @@
                 </div>
                 <div class="modal-footer">
                   <a href="{{upload.url}}" target=“_blank”>
-                    <button type=“button” class=“btn btn-secondary”>
-                      Open
+                    <button type=“button” class="btn btn-danger">
+                      Full Size
                     </button>
                   </a>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -48,47 +36,66 @@
               </div>
             </div>
           </div>
+          <!-- End Modal -->
+
         </div>
       </div>
     </p>
-    <h6>Submitted by: <span>{{splitEmail upload.email}}</span></h6>
-    <h6>Submitted: <span>{{limit upload.createdAt}}</span></h6>
-    <h6>Updated: <span>{{limit upload.updatedAt}}</span></h6>
+    <h3 class="image-title">
+      {{upload.name}}
+    </h3>
+    <div class="upload-data">
+    <h6 class="image-description">
+      {{#if upload.description}}
+        {{upload.description}}
+      {{else}}
+        No description provided.
+      {{/if}}
+    </h6>
+    <hr>
+    <p class="text-handlebars">Submitted by:</p> <span class="data-handlebars">{{splitEmail upload.email}}</span><br />
+    <p class="text-handlebars">Submitted on:</p> <span class="data-handlebars">{{limit upload.createdAt}}</span><br />
+    <p class="text-handlebars">Updated on:</p><span class="data-handlebars">{{limit upload.updatedAt}}</span><br />
+      <h6 class="tags">tags:</h6>
     <p>
-      <h6>Tags:</h6>
       {{upload.tags}}
     </p>
-    <p>
+    <hr>
+    <!-- <span class="text-handlebars"> -->
       {{#if upload.editable}}
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal-{{upload._id}}" data-id="{{upload._id}}" data-whatever="{{upload._id}}">
           Edit
         </button>
         <button class="btn btn-danger remove-upload" data-id="{{upload._id}}">Take it down!</button>
+      </div>
+    <!-- </span> -->
         <!-- MODAL START -->
-        <div class="modal fade" id="editModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+
+        <div class="modal" id="editModal-{{upload._id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+          <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="editModalLabel">Edit</h5>
+                <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <!-- FORM START -->
                 <div class="edit-upload-buttons">
-                  <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group">
-                    <input name="upload[name]" type="text" placeholder="name" />
-                    <input name="upload[description]" type="text" placeholder="description" />
-                    <input name="upload[tags]" type="text" placeholder="tags" />
-                    <input id="editClose" type='submit' value='update' class="btn btn-outline-info">
+                  <form data-id="{{upload._id}}" id="image-update-{{upload._id}}" class="form-group" required>
+                    <p class="text-handlebars"> Name: </p><span class="data-handlebars"><input name="upload[name]" type="text" placeholder="name" /></span><br /><br />
+                  <p class="text-handlebars">Description: </p><span class="data-handlebars"><input name="upload[description]" type="text" placeholder="description" /> </span><br /><br />
+                    <p class="text-handlebars"> Tags: </p><span class="data-handlebars"><input name="upload[tags]" type="text" placeholder="tags" /> </span><br /></br />
+                    <center><p><input type='submit' value='Update' class="btn btn-danger"></p></center>
                   </form>
                 </div>
                 <!-- FORM END -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
               </div>
             </div>
           </div>
@@ -98,4 +105,5 @@
       {{/if}}
 
   </section>
+</div>
 {{/each}}
