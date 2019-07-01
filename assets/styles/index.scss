@@ -156,6 +156,7 @@ a {
     box-shadow:(2px 2px 2px #5d4c4c);
 
 
+
     p {
       margin-bottom: 0;
     }
@@ -175,7 +176,18 @@ a {
     }
   }
 
+  .aboutMeLink {
+    color: $coral;
+    &:hover {
+      color: $coral;
+    }
+  }
+
 #camera {
   opacity: .9;
+  margin: 1rem;
+}
+
+#aboutMeModalButton {
   margin: 1rem;
 }
